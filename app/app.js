@@ -3,17 +3,17 @@
 define([
 	'angular',
 	'angularRoute',
-	'view1/view1',
-	'view2/view2'
-], function(angular, angularRoute, view1, view2) {
+	'ratecheckview/ratecheck',
+	'rateresultsview/rateresults'
+], function(angular, angularRoute, ratecheckview, rateresults) {
 	// Declare app level module which depends on views, and components
-	return angular.module('myApp', [
+	return angular.module('findYourRateApp', [
 		'ngRoute',
-		'myApp.view1',
-		'myApp.view2'
+		'findYourRateApp.ratecheck',
+		'findYourRateApp.rateresults'
 	]).
 	config(['$routeProvider', function($routeProvider) {
-		$routeProvider.otherwise({redirectTo: '/view1'});
+		$routeProvider.otherwise({redirectTo: '/ratecheck'});
 	}]);
 });
 

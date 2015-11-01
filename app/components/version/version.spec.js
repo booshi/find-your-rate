@@ -2,8 +2,8 @@
 'use strict';
 
 define(['app', 'angularMocks'], function(app) {
-	describe('myApp.version module', function() {
-		beforeEach(module('myApp.version'));
+	describe('findYourRateApp.version module', function() {
+		beforeEach(module('findYourRateApp.version'));
 
 		describe('version service', function() {
 			it('should return current version', inject(function(version) {
