@@ -34,6 +34,17 @@ This is a fork of [Angular Seed](https://github.com/angular/angular-seed) with f
     
     # Run end to end tests (requires web server to be running)
     npm run protractor
+    
+## Data
+    
+    # Data is loaded from rateresults/user.json
+    Future implementation : JSON will be replaced with a RESTful service 
+    
+## Known Issues
+
+    # The form fields are not validated while Submission. This is a known issue in AngularJs form.
+    More details available at https://github.com/angular/angular.js/issues/2513
+     
 
 Documentation from the original repo untouched
 ----------------------------------------------

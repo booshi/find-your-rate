@@ -8,7 +8,7 @@ define([
 
     angular.module('findYourRateApp.ratecheckservice', ['ngResource'])
         .factory('RateCheckService', ['$resource',function($resource) {
-            return $resource('rateresults/user.json', {},
+            return $resource('rateresults/availableLoanRatesOption.json', {},
                 {
                     query: {method: 'GET', params: {}, isArray: false}
                 });

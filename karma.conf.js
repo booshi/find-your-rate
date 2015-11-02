@@ -11,9 +11,8 @@ module.exports = function (config) {
             {pattern: 'app/bower_components/angular-route/angular-route.js', included: false},
             {pattern: 'app/bower_components/angular-mocks/angular-mocks.js', included: false},
             {pattern: 'app/bower_components/angular-resource/angular-resource.js', included: false},
-            {pattern: 'app/bower_components/angular-animate/angular-animate.js', included: false},
             {pattern: 'app/components/**/*.js', included: false},
-            {pattern: 'app/*/**/*.js', included: false},
+            {pattern: 'app/rate*view/**/*.js', included: false},
             {pattern: 'app/app.js', included: false},
             'app/require-config.js'
         ],
@@ -40,7 +39,7 @@ module.exports = function (config) {
         },
 
         preprocessors: {
-            'app/*/**/*.js': 'coverage'
+            'app/rate*view/**/*.js': 'coverage'
         },
 
         reporters : ['coverage'],
