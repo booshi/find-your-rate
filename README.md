@@ -1,6 +1,6 @@
 # About
 
-Loan Rate Finder Application is built using with 
+Loan Rate Finder Application is built with 
 
 * AngularJS 1.4.x
 * RequireJS 2.1.x
@@ -14,7 +14,7 @@ This is a fork of [Angular Seed](https://github.com/angular/angular-seed) with f
 
 ## Installation
 
-    git clone git@
+    git clone git@https://github.com/booshi/find-your-rate
     cd find-your-rate
     npm install
 
@@ -26,7 +26,12 @@ This is a fork of [Angular Seed](https://github.com/angular/angular-seed) with f
 
     # Run unit tests automatically whenever app changes
     npm test
-
+    
+    # Unit tests coverage is available under 'coverage' folder for each component
+    
+    # Unit tests coverage can be viewed at 
+    http://localhost:63342/find-your-rate/coverage/Chrome%2043.0.2357%20%28Mac%20OS%20X%2010.9.5%29/index.html
+    
     # Run end to end tests (requires web server to be running)
     npm run protractor
 
