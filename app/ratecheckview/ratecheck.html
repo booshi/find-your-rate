@@ -18,6 +18,13 @@
                 </span>
             </p>
             <p>
+                <label class='field' for="amount">Amount</label>
+                <input type="text" ng-model="user.amount" required id="amount" name="amount" min="5000" max="350000"/>
+                <span ng-show="form.$submitted || form.amount.$touched">
+                    <span ng-show="form.amount.$error.required">Enter the required amount.</span>
+                </span>
+            </p>
+            <p>
                 <label class='field' for="creditscore">Credit Score</label>
                 <input type="number" ng-model="user.creditscore" required id="creditscore" min="300" max="850" name="creditscore"/>
                 <span ng-show="form.$submitted || form.creditscore.$touched">

@@ -8,7 +8,7 @@ define([
     angular.module('findYourRateApp.ratecheckcontroller', [])
         .controller('RateCheckCtrl', ['$scope', '$location', 'RateCheckService', 'RetrieveResultsService',
             function ($scope, $location, RateCheckService, RetrieveResultsService) {
-                $scope.master = {"name": "", "email": "", "creditscore": ""};
+                $scope.master = {"name": "", "email": "","amount":"", "creditscore": ""};
 
                 $scope.update = function () {
                     $scope.rateResults = RateCheckService.query();

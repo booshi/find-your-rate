@@ -39,6 +39,7 @@ describe('find your rate app', function () {
         var name = element.all(by.model('user.name'));
         var email = element.all(by.model('user.email'));
         var creditscore = element.all(by.model('user.creditscore'));
+        var amount = element.all(by.model('user.amount'));
         var resetLoanForm = element.all(by.id('resetLoanForm'));
         var findYourRate = element.all(by.id('findYourRate'));
         var submitLoanApplication = element.all(by.id('submitLoanApplication'));
@@ -46,46 +47,48 @@ describe('find your rate app', function () {
         var successMessage = element.all(by.id('successMessage'));
 
 
-        function inputData(userName, userEmail,userCreditScore) {
+        function inputData(userName, userEmail,requestedAmount,userCreditScore) {
             name.sendKeys(userName);
             email.sendKeys(userEmail);
+            amount.sendKeys(requestedAmount);
             creditscore.sendKeys(userCreditScore);
         }
 
         it('should display email warning message', function() {
-            inputData('testUser', 'testEmail','450');
+            inputData('testUser', 'testEmail','5000','450');
             expect($('[ng-show=form\\.email\\.\\$error\\.email]').isDisplayed()).toBeTruthy();
         });
 
         it('should display name warning message', function() {
-            inputData('', 'testEmail@gmail.com','450');
+            inputData('', 'testEmail@gmail.com','6000','450');
             expect($('[ng-show=form\\.name\\.\\$error\\.required]').isDisplayed()).toBeTruthy();
         });
 
         it('should display credit score warning message', function() {
-            inputData('testUser', 'testEmail@gmail.com','22');
+            inputData('testUser', 'testEmail@gmail.com','6000','22');
             email.click();
             expect(element(by
                 .css('input.ng-invalid')).isPresent()).toBe(true);
         });
 
         it('should reset the entered values', function() {
-            inputData('testUser', 'testEmail@gmail.com','359');
+            inputData('testUser', 'testEmail@gmail.com','6500','359');
             resetLoanForm.click();
             expect(element(by.model('user.name')).getText()).toEqual('');
             expect(element(by.model('user.creditscore')).getText()).toEqual('');
             expect(element(by.model('user.email')).getText()).toEqual('');
+            expect(element(by.model('user.amount')).getText()).toEqual('');
         });
 
         it('should submit the form values', function() {
-            inputData('testUser', 'testEmail@gmail.com','359');
+            inputData('testUser', 'testEmail@gmail.com','6500','359');
             findYourRate.click();
             expect(element.all(by.css('[ng-view] form div fieldset legend')).first().getText()).
                 toMatch(/Please find your approved loan rate below/);
         });
 
         it('should submit the loan application', function() {
-            inputData('testUser', 'testEmail@gmail.com','359');
+            inputData('testUser', 'testEmail@gmail.com','6500','359');
             findYourRate.click();
             expect(element(by
                 .css('div.ng-hide')).isPresent()).toBe(true);
@@ -94,11 +97,10 @@ describe('find your rate app', function () {
             submitLoanApplication.click();
             expect(element(by
                 .css('div.ng-hide')).isPresent()).toBe(false);
-
         });
 
         it('should return to find your rate', function() {
-            inputData('testUser', 'testEmail@gmail.com','359');
+            inputData('testUser', 'testEmail@gmail.com','6500','359');
             findYourRate.click();
             expect(element(by
                 .css('div.ng-hide')).isPresent()).toBe(true);
