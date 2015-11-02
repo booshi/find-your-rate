@@ -1,21 +1,21 @@
 # About
 
-This is a fork of [Angular Seed](https://github.com/angular/angular-seed) but with full RequireJS support.
+Loan Rate Finder Application is built using with 
 
 * AngularJS 1.4.x
 * RequireJS 2.1.x
-* Full support for unit tests using Karma
-* Full support for e2e tests using Protractor
+* Karma for unit testing
+* Protractor for end2end testing 
+
+This is a fork of [Angular Seed](https://github.com/angular/angular-seed) with full RequireJS
 
 ## Changes & Notes
 
-* Removed `index-async.html` and all the related logic & tasks. Original seed project offers a way to asynchroneusly load initial set of js files using a custom loader.
-* Bootstraping file (`require-config.js`) is used for both unit testing and bootstraping on the actual page. If you don't plan to build your sources using `r.js`, you should consider removing logic related to Karma before using this file in production. 
 
 ## Installation
 
-    git clone git@github.com:tnajdek/angular-requirejs-seed.git
-    cd angular-requirejs-seed
+    git clone git@
+    cd find-your-rate
     npm install
 
 ## Running

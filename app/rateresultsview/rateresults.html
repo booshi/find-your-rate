@@ -1,8 +1,41 @@
-<p>This is the partial for view 2.</p>
-<p>
-	{{ welcomeMessage }}
-</p>
-<p>
-	Showing of 'interpolate' filter:
-	{{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<form novalidate class="css-form">
+    <div class="fieldset">
+        <fieldset>
+            <legend>Please find your approved loan rate below</legend>
+            <p>
+                <label class='field'>Requested Amount: </label>{{rateResults.requestedAmount}}
+            </p>
+            <p>
+                <label class='field'>APR: </label>{{rateResults.nominalApr}}
+            </p>
+            <p>
+                <label class='field'>Interest Amount: </label>{{rateResults.interestAmount}}
+            </p>
+            <p>
+                You can choose the following payment option for the loan
+            </p>
+            <table>
+                <tr>
+                    <th>
+                        Payment Term
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                </tr>
+                    <tr ng-repeat="loanOffers in rateResults.loanOfferTerms">
+                        <td>{{loanOffers.loanOfferTerm}} months</td>
+                        <td>$ {{loanOffers.amount}}</td>
+                    </tr>
+            </table>
+            <p>
+                <input id="backToForm" type="button" ng-click="back()" value="Back" />
+                <input id="submitLoanApplication" type="submit" ng-click="submitApplication(user)" value="Submit Loan Application" />
+            <div ng-init="isSuccessMessageVisible = false" ng-show="isSuccessMessageVisible" id="successMessage" class="successMessage">
+                 Your application is submitted successfully.
+            </div>
+
+            </p>
+        </fieldset>
+    </div>
+</form>

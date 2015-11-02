@@ -5,18 +5,29 @@
 	<link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
 	<link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
 	<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
-	<title>My AngularJS App</title>
+	<title>Find Your Rate App</title>
 	<link rel="stylesheet" href="app.css">
 </head>
 <body ng-cloak>
-	<ul class="menu">
-		<li><a href="#/ratecheck">view1</a></li>
-		<li><a href="#/rateresultsview">view2</a></li>
-	</ul>
+<div id="wrapper">
+    <div id="headerwrap">
+        <div id="header">
+            <p class="headerText">Loan Rate Finder</p>
+        </div>
+    </div>
+    <div id="contentwrap">
+        <div id="content">
+            <ul class="menu">
+                <li><a href="#/ratecheck" class="button">Find Your Rate</a></li>
+                <!--<li><a href="#/retrieveYourApplication" class="button">Retrieve Your Application(TBD)</a></li>-->
+            </ul>
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
 
-	<div ng-view></div>
 
-	<div>Angular seed app: v<span app-version></span></div>
+
 	<script data-main="require-config" src="bower_components/requirejs/require.js"></script>
 </body>
 </html>

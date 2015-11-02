@@ -4,15 +4,7 @@
   list-style: none;
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
+  padding: 0 0 1em;
 }
 
 .menu > li {
@@ -20,7 +12,6 @@
 }
 
 .menu > li:before {
-  content: "|";
   padding-right: 0.3em;
 }
 
@@ -32,3 +23,127 @@
 [ng-cloak] {
     display: none;
 }
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color:#333
+}
+
+p {
+    padding: 10px;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+#headerwrap {
+    width: 1000px;
+    float: left;
+    margin: 0 auto;
+}
+
+#header {
+    height: 75px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #858585;
+    margin: 5px;
+}
+
+.headerText{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color:#333
+}
+
+#contentwrap {
+    width: 1000px;
+    float: left;
+    margin: 0 auto;
+}
+
+#content {
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #ebebeb;
+    margin: 5px;
+}
+
+.button {
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.css-form input.ng-invalid.ng-touched {
+    border-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-touched {
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+div.fieldset{
+    border: solid black thin;
+    width: 97%;
+    background-color: transparent;
+    margin : 15px;
+}
+
+fieldset{
+    border: none;
+    margin: 0 0 0 0px;
+    padding: 0px;
+}
+
+legend{
+    font-size: 20px;
+    background-color: #cdcdcd;
+    color: white;
+    padding: 5px 43px 5px 5px;
+    width: 95%;
+}
+
+label.field{
+    text-align: right;
+    width: 100px;
+    float: left;
+    font-weight: bold;
+    padding-right:10px;
+}
+
+input.textbox-300{
+    width: 300px;
+    float: left;
+}
+
+fieldset p{
+    clear: both;
+    padding: 5px;
+}
+
+.successMessage{
+    color: green;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+    background-color: grey;
+    color: white;
+}
+
+
