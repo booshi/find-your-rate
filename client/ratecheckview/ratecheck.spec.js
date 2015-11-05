@@ -74,6 +74,9 @@ define(['app', 'angularMocks'], function (app) {
                     'RateCheckService': {
                         query: function () {
                             return rateCheckResults();
+                        },
+                        save:function(){
+                            return rateCheckResults();
                         }
                     },
                     'RetrieveResultsService':{
@@ -85,34 +88,12 @@ define(['app', 'angularMocks'], function (app) {
             }));
 
 
-            it('should return default "user" model with name,email and credit score', function () {
-                expect(scope.user).toEqual({"name": "", "email": "", "creditscore": ""});
-
-                expect(scope.user).toEqual(
-                    {"name": "", "email": "", "creditscore": ""});
+            it('should return default "user" model with name,email,account and credit score', function () {
+                expect(scope.user).toEqual({"name": "", "email": "","amount":"", "creditscore": ""});
             });
 
             it('should return "rate results" model as undefined', function () {
                 expect(scope.rateResults).not.toBeDefined();
-            });
-
-            it('should return "rate results" as defined', function () {
-                expect(scope.rateResults).toBeUndefined();
-                var user = '{"name":"","email":"","creditscore":""}';
-                scope.update(user, form);
-                expect(scope.rateResults).toBeDefined();
-            });
-
-            it('should return "rate results" model with loan rate terms', function () {
-                var user = '{"name":"","email":"","creditscore":""}';
-                scope.update(user, form);
-                expect(scope.rateResults).toEqual(jasmine.objectContaining(rateCheckResults()));
-            });
-
-            it('should return "true" after adding the rate Results model', function () {
-                var user = '{"name":"","email":"","creditscore":""}';
-                scope.update(user, form);
-                expect(scope.isAdded).toEqual(true);
             });
 
             it('should "reset" the form', function () {
@@ -128,6 +109,7 @@ define(['app', 'angularMocks'], function (app) {
             it('should have the rate check service defined',inject(function (RateCheckService) {
                 expect(RateCheckService).toBeDefined();
             }));
+
         });
 
         describe('retrieve results service', function () {

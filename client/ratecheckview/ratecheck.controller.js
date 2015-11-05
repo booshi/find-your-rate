@@ -11,18 +11,22 @@ define([
                 $scope.master = {"name": "", "email": "","amount":"", "creditscore": ""};
 
                 $scope.update = function () {
-                    var post  = RateCheckService.save($scope.user,function(response){
-                        console.log('data ' + JSON.stringify(response));
+                    $scope.isLoanDenied = false;
+                    RateCheckService.save($scope.user,function(response){
+                        if(!response.error){
+                                $scope.isAdded = RetrieveResultsService.updateRateResults(response);
+                                if($scope.isAdded){
+                                    $location.path('/rateresultsview');
+                                }
+                            }else{
+                                $scope.isLoanDenied = true;
+                            }
                     });
-                    $scope.isAdded = RetrieveResultsService.updateRateResults($scope.rateResults);
-                    if($scope.isAdded){
-                        $location.path('/rateresultsview');
-                    }
-
                 };
 
                 $scope.reset = function () {
                     $scope.user = angular.copy($scope.master);
+                    $scope.isLoanDenied = false;
                 };
 
                 $scope.reset();

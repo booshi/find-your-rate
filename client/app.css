@@ -137,6 +137,10 @@ fieldset p{
     color: green;
 }
 
+.deniedMessage{
+    color: red;
+}
+
 table, th, td {
     border: 1px solid black;
     margin-left:15px;

@@ -71,6 +71,15 @@ describe('find your rate client', function () {
                 .css('input.ng-invalid')).isPresent()).toBe(true);
         });
 
+        it('should display warning message for amount', function() {
+            inputData('testUser', 'testEmail@gmail.com','60000','22');
+            email.click();
+            expect(element(by
+                .css('input.ng-invalid')).isPresent()).toBe(true);
+        });
+
+
+
         it('should reset the entered values', function() {
             inputData('testUser', 'testEmail@gmail.com','6500','359');
             resetLoanForm.click();

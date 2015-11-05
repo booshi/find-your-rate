@@ -13,11 +13,15 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 
 var routes = require('./routes');
-app.use('/routePath',routes);
+app.use('/loanOffers',routes);
+
 
 // listen (start app with node server.js) ======================================
-app.listen(8080);
-console.log("App listening on port 8080");
+var server = app.listen(8080, function () {
+    var port = server.address().port;
+    console.log('app listening at port %s', port);
+});
+module.exports = server;
 
 
 

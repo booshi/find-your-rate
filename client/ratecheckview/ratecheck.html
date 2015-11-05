@@ -19,7 +19,7 @@
             </p>
             <p>
                 <label class='field' for="amount">Amount</label>
-                <input type="text" ng-model="user.amount" required id="amount" name="amount" min="5000" max="350000"/>
+                <input type="number" ng-model="user.amount" required id="amount" name="amount" min="5000" max="35000"/>
                 <span ng-show="form.$submitted || form.amount.$touched">
                     <span ng-show="form.amount.$error.required">Enter the required amount.</span>
                 </span>
@@ -36,5 +36,8 @@
                 <input type="submit" value="FIND YOUR RATE" id="findYourRate"/>
             </p>
         </fieldset>
+        <div ng-init="isLoanDenied = false" ng-show="isLoanDenied" id="loanDenied" class="deniedMessage">
+            Your loan application is not approved. Please contact us at 1-800-GET-LOANS for more details.
+        </div>
     </div>
 </form>
