@@ -8,9 +8,10 @@ define([
 
     angular.module('findYourRateApp.ratecheckservice', ['ngResource'])
         .factory('RateCheckService', ['$resource',function($resource) {
-            return $resource('rateresults/availableLoanRatesOption.json', {},
+            return $resource('routePath/test/getDataFromDB', {},
                 {
-                    query: {method: 'GET', params: {}, isArray: false}
+                    query: {method: 'GET', params: {}, isArray: false},
+                    post :{method:'POST'}
                 });
         }])
 
@@ -33,11 +34,5 @@ define([
                 updateRateResults : updateRateResults,
                 retrieveRateResults : retrieveRateResults
             }
-
         }]);
-
-
-
-
-    ;
 });

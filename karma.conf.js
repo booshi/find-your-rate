@@ -7,14 +7,14 @@ module.exports = function (config) {
         basePath: './',
 
         files: [
-            {pattern: 'app/bower_components/angular/angular.js', included: false},
-            {pattern: 'app/bower_components/angular-route/angular-route.js', included: false},
-            {pattern: 'app/bower_components/angular-mocks/angular-mocks.js', included: false},
-            {pattern: 'app/bower_components/angular-resource/angular-resource.js', included: false},
-            {pattern: 'app/components/**/*.js', included: false},
-            {pattern: 'app/rate*view/**/*.js', included: false},
-            {pattern: 'app/app.js', included: false},
-            'app/require-config.js'
+            {pattern: 'client/bower_components/angular/angular.js', included: false},
+            {pattern: 'client/bower_components/angular-route/angular-route.js', included: false},
+            {pattern: 'client/bower_components/angular-mocks/angular-mocks.js', included: false},
+            {pattern: 'client/bower_components/angular-resource/angular-resource.js', included: false},
+            {pattern: 'client/components/**/*.js', included: false},
+            {pattern: 'client/rate*view/**/*.js', included: false},
+            {pattern: 'client/client.js', included: false},
+            'client/require-config.js'
         ],
 
 
@@ -39,7 +39,7 @@ module.exports = function (config) {
         },
 
         preprocessors: {
-            'app/rate*view/**/*.js': 'coverage'
+            'client/rate*view/**/*.js': 'coverage'
         },
 
         reporters : ['coverage'],

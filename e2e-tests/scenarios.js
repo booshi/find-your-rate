@@ -3,7 +3,7 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
-describe('find your rate app', function () {
+describe('find your rate client', function () {
 
     browser.get('index.html');
 

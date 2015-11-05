@@ -11,7 +11,9 @@ define([
                 $scope.master = {"name": "", "email": "","amount":"", "creditscore": ""};
 
                 $scope.update = function () {
-                    $scope.rateResults = RateCheckService.query();
+                    var post  = RateCheckService.save($scope.user,function(response){
+                        console.log('data ' + JSON.stringify(response));
+                    });
                     $scope.isAdded = RetrieveResultsService.updateRateResults($scope.rateResults);
                     if($scope.isAdded){
                         $location.path('/rateresultsview');
