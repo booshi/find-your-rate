@@ -18,11 +18,11 @@ describe('loading express', function () {
         request(server)
             .get('/foo/bar')
             .expect(404,done);
-        
+
     });
 
     it('responds to /loanOffers/rates ', function testRates(done) {
-        var user = {name:'testUser',email:'b@c.d',creditscore:'700',amount:'5001'};
+        var user = {name:'testUser',email:'b@c.d',creditscore:700,amount:5001};
         request(server)
             .post('/loanOffers/rates')
             .send(user)

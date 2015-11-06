@@ -3,11 +3,10 @@
 define([
 	'angular',
 	'angularRoute',
-	'components/version/version',
-    'ratecheckview/ratecheck.services',
+	'ratecheckview/ratecheck.services',
     './rateresults.controller'
 ], function(angular) {
-	angular.module('findYourRateApp.rateresults', ['ngRoute', 'findYourRateApp.version','findYourRateApp.ratecheckservice',
+	angular.module('findYourRateApp.rateresults', ['ngRoute', 'findYourRateApp.ratecheckservice',
         'findYourRateApp.rateresultscontroller'])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/rateresultsview', {

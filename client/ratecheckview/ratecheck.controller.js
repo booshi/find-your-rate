@@ -8,20 +8,24 @@ define([
     angular.module('findYourRateApp.ratecheckcontroller', [])
         .controller('RateCheckCtrl', ['$scope', '$location', 'RateCheckService', 'RetrieveResultsService',
             function ($scope, $location, RateCheckService, RetrieveResultsService) {
-                $scope.master = {"name": "", "email": "","amount":"", "creditscore": ""};
+                $scope.master = {"name": "", "email": "", "amount": "", "creditscore": ""};
 
-                $scope.update = function () {
-                    $scope.isLoanDenied = false;
-                    RateCheckService.save($scope.user,function(response){
-                        if(!response.error){
+                $scope.update = function (isValid) {
+                    if (isValid) {
+                        $scope.isLoanDenied = false;
+                        RateCheckService.save($scope.user, function (response) {
+                            if (!response.error) {
                                 $scope.isAdded = RetrieveResultsService.updateRateResults(response);
-                                if($scope.isAdded){
+                                if ($scope.isAdded) {
                                     $location.path('/rateresultsview');
                                 }
-                            }else{
+                            } else {
                                 $scope.isLoanDenied = true;
                             }
-                    });
+                        });
+
+                    }
+
                 };
 
                 $scope.reset = function () {

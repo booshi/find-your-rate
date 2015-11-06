@@ -27,14 +27,20 @@ router.post('/rates', function (req, res) {
     db.insert(req.body, function (err, resp) {
         var loanOffers = utils(req.body);
         console.log(loanOffers)
-        loanOffers.then(function (response) {
-            console.log('Response '+JSON.stringify(response));
-            res.json(response);
-        }).catch(function (error) {
-            var errorMessage = {error : error.message};
+        if(loanOffers){
+            loanOffers.then(function (response) {
+                console.log('Response '+JSON.stringify(response));
+                res.json(response);
+            }).catch(function (error) {
+                var errorMessage = {error : error.message};
+                res.json(errorMessage);
+                console.log('error ' + error.message);
+            });
+        }else{
+            var errorMessage = {error : 'Unable to calculate loan offers'};
             res.json(errorMessage);
-            console.log('error ' + error.message);
-        });
+        }
+
     });
 
 });
