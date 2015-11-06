@@ -1,7 +1,7 @@
 # About
 
 Loan Rate Finder Application calculates the interest rate and monthly payment options from one to five years when
-a borrower provides his Credit Score and Loan amount. Click [here](.#-Interest Rate Calculation) for APR calculations.
+a borrower provides his Credit Score and Loan amount. Click [here](.#interest-rate-calculation) for APR calculations.
 
 This application is built with
 
