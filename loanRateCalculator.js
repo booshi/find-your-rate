@@ -41,6 +41,9 @@ var calculateRateForEachTerm = function (amount, termInMonths) {
 }
 
 var calculateLoanGrade = function (creditScore) {
+    if (creditScore < 300 || creditScore > 850) {
+        throw new Error('Unable to calculate Loan Grade');
+    }
     switch (true) {
         case (creditScore < 600) :
             return 'A';
@@ -60,23 +63,28 @@ var calculateAPR = function (amount, loanGrade) {
     if (amount < 5000 || amount > 35000) {
         throw new Error('Unable to calculate APR');
     }
-    switch (loanGrade) {
+    var grade = loanGrade;
+    switch (grade) {
         case 'A':
             if (amount <= 10000) {
                 return baseRate * 3.5;
             }
+            break;
         case 'B':
             if (amount <= 15000) {
                 return baseRate * 3.0;
             }
+            break;
         case 'C':
             if (amount <= 25000) {
                 return baseRate * 2.5;
             }
+            break;
         case 'D':
             if (amount <= 35000) {
                 return baseRate * 1.5;
             }
+            break;
     }
     console.log('Unable to calculateAPR ');
     throw new Error('Unable to calculate APR');

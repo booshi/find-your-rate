@@ -11,7 +11,6 @@ module.exports = function (config) {
             {pattern: 'client/bower_components/angular-route/angular-route.js', included: false},
             {pattern: 'client/bower_components/angular-mocks/angular-mocks.js', included: false},
             {pattern: 'client/bower_components/angular-resource/angular-resource.js', included: false},
-            {pattern: 'client/components/**/*.js', included: false},
             {pattern: 'client/ratecheckview/**/*.js', included: false},
             {pattern: 'client/rateresultsview/**/*.js', included: false},
             {pattern: 'client/app.js', included: false},
@@ -32,15 +31,15 @@ module.exports = function (config) {
             'karma-jasmine',
             'karma-requirejs',
             'karma-junit-reporter'
-        ]
+        ],
 
-    /*    junitReporter: {
+        junitReporter: {
             outputFile: 'test_out/unit.xml',
             suite: 'unit'
         },
 
         preprocessors: {
-            'client/rate*view/!**!/!*.js': 'coverage'
+            'client/rate*view/**/*.js': 'coverage'
         },
 
         reporters : ['coverage'],
@@ -50,6 +49,5 @@ module.exports = function (config) {
             dir : 'coverage/',
             file : 'coverage.html'
         }
-*/
     });
 };

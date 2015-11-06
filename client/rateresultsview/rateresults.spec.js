@@ -1,7 +1,7 @@
 /*global module, inject */
 'use strict';
 
-define(['app', 'angularMocks'], function (app) {
+define(['../app', 'angularMocks'], function (app) {
     describe('findYourRateApp.rateresults module', function () {
 
         describe('RateResultsCtrl controller', function () {

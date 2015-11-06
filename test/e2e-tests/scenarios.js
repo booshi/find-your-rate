@@ -56,12 +56,12 @@ describe('find your rate client', function () {
 
         it('should display email warning message', function() {
             inputData('testUser', 'testEmail','5000','450');
-            expect($('[ng-show=form\\.email\\.\\$error\\.email]').isDisplayed()).toBeTruthy();
+            expect($('[ng-show=rateCheckForm\\.email\\.\\$error\\.email]').isDisplayed()).toBeTruthy();
         });
 
         it('should display name warning message', function() {
             inputData('', 'testEmail@gmail.com','6000','450');
-            expect($('[ng-show=form\\.name\\.\\$error\\.required]').isDisplayed()).toBeTruthy();
+            expect($('[ng-show=rateCheckForm\\.name\\.\\$error\\.required]').isDisplayed()).toBeTruthy();
         });
 
         it('should display credit score warning message', function() {

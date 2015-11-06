@@ -1,7 +1,7 @@
 /*global module, inject */
 'use strict';
 
-define(['app', 'angularMocks'], function (app) {
+define(['../app', 'angularMocks'], function (app) {
 
     describe('findYourRateApp.ratecheck module', function () {
         var myCustomEquality = function (first, second) {
@@ -35,9 +35,11 @@ define(['app', 'angularMocks'], function (app) {
         });
 
         describe('RateCheckCtrl', function () {
-            var scope, ctrl;
+            var scope, ctrl, $httpBackend;
+            beforeEach(module('findYourRateApp.ratecheck'));
 
-            var rateCheckResults = function(){
+            var rateCheckResults = function () {
+                console.log('here');
                 return {
                     "requestedAmount": 30000,
                     "nominalApr": 7.56,
@@ -67,20 +69,23 @@ define(['app', 'angularMocks'], function (app) {
                 };
             }
 
-            beforeEach(inject(function ($rootScope, $controller) {
+            beforeEach(inject(function ($rootScope, $controller, $injector) {
                 scope = $rootScope.$new();
+
+                $httpBackend = $injector.get('$httpBackend');
                 ctrl = $controller('RateCheckCtrl', {
                     $scope: scope,
                     'RateCheckService': {
                         query: function () {
                             return rateCheckResults();
                         },
-                        save:function(){
-                            return rateCheckResults();
+                        save: function () {
+                            $httpBackend.when('POST', '/loanOffers/rates')
+                                .respond(rateCheckResults());
                         }
                     },
-                    'RetrieveResultsService':{
-                        updateRateResults : function(){
+                    'RetrieveResultsService': {
+                        updateRateResults: function () {
                             return true;
                         }
                     }
@@ -89,7 +94,7 @@ define(['app', 'angularMocks'], function (app) {
 
 
             it('should return default "user" model with name,email,account and credit score', function () {
-                expect(scope.user).toEqual({"name": "", "email": "","amount":"", "creditscore": ""});
+                expect(scope.user).toEqual({"name": "", "email": "", "amount": "", "creditscore": ""});
             });
 
             it('should return "rate results" model as undefined', function () {
@@ -97,23 +102,36 @@ define(['app', 'angularMocks'], function (app) {
             });
 
             it('should "reset" the form', function () {
-                var user = {name:'',email:'',creditscore:''};
+                var user = {name: '', email: '', creditscore: '', amount: ''};
                 scope.reset(form);
                 expect(scope.user).toEqual(jasmine.objectContaining(user));
+            });
+
+            it('should not submit the data', function () {
+                scope.update(false);
+                expect(scope.isAdded).not.toBeDefined();
+                expect(scope.isLoanDenied).toEqual(false);
+            });
+
+            it('should submit the form', function () {
+                var user = {name: 'testUser', email: 'test@gmail.com', creditscore: 700, amount: 8000};
+                scope.user = user;
+                scope.update(true);
+                expect(scope.isLoanDenied).toEqual(false);
             });
 
         });
 
 
         describe('ratecheck services', function () {
-            it('should have the rate check service defined',inject(function (RateCheckService) {
+            it('should have the rate check service defined', inject(function (RateCheckService) {
                 expect(RateCheckService).toBeDefined();
             }));
 
         });
 
         describe('retrieve results service', function () {
-            var rateCheckResults = function(){
+            var rateCheckResults = function () {
                 return {
                     "requestedAmount": 30000,
                     "nominalApr": 7.56,
@@ -143,11 +161,11 @@ define(['app', 'angularMocks'], function (app) {
                 };
             }
 
-            it('should have the retrieve results service defined',inject(function (RetrieveResultsService) {
+            it('should have the retrieve results service defined', inject(function (RetrieveResultsService) {
                 expect(RetrieveResultsService).toBeDefined();
             }));
 
-            it('should return false for empty object',inject(function (RetrieveResultsService) {
+            it('should return false for empty object', inject(function (RetrieveResultsService) {
                 expect(RetrieveResultsService).toBeDefined();
                 var updateRateResults = RetrieveResultsService.updateRateResults(undefined);
                 expect(updateRateResults).toEqual(false);
@@ -158,18 +176,18 @@ define(['app', 'angularMocks'], function (app) {
 
             }));
 
-            it('should return true for valid object',inject(function (RetrieveResultsService) {
+            it('should return true for valid object', inject(function (RetrieveResultsService) {
                 expect(RetrieveResultsService).toBeDefined();
                 var obj = rateCheckResults();
                 var updateRateResults = RetrieveResultsService.updateRateResults(obj);
                 expect(updateRateResults).toEqual(true);
             }));
 
-            it('should retrieve an empty object',inject(function (RetrieveResultsService) {
+            it('should retrieve an empty object', inject(function (RetrieveResultsService) {
                 expect(RetrieveResultsService).toBeDefined();
                 var obj = rateCheckResults();
                 var updatedRates = RetrieveResultsService.retrieveRateResults();
-                expect(updatedRates).toEqual({ });
+                expect(updatedRates).toEqual({});
             }));
         });
 
