@@ -14,6 +14,8 @@ This application is built with
 * Mocha framework
 * Chai - BDD Assertion library 
 * SuperTest for HTTP assertions
+ 
+[ ![Codeship Status for booshi/find-your-rate](https://codeship.com/projects/7d082050-67a7-0133-0d36-7e77e7cef63b/status?branch=master)](https://codeship.com/projects/114111)
 
 ## Installation
 
