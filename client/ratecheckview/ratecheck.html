@@ -13,7 +13,7 @@
                 <label class='field'>Email</label>
                 <input type="email" ng-model="user.email" required name="email" id="email"/>
                 <span ng-show="rateCheckForm.$submitted || rateCheckForm.email.$touched">
-                    <span ng-show="rateCheckForm.email.$error.required">Tell us your email</span>
+                    <span ng-show="rateCheckForm.email.$error.required">Enter your email</span>
                     <span ng-show="rateCheckForm.email.$error.email">This is not a valid email</span>
                 </span>
             </p>
