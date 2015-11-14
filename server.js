@@ -1,6 +1,7 @@
 // set up ========================
 var express  = require('express');
 var app      = express();                               // create our app w/ express
+//Middleware
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 

@@ -189,6 +189,9 @@ define(['../app', 'angularMocks'], function (app) {
                 var updatedRates = RetrieveResultsService.retrieveRateResults();
                 expect(updatedRates).toEqual({});
             }));
+
+
+
         });
 
     });

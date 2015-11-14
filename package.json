@@ -35,7 +35,7 @@
     "update-webdriver": "webdriver-manager update",
     "preprotractor": "npm run update-webdriver",
     "protractor": "protractor test/e2e-tests/protractor.conf.js",
-    "test_server": "mocha -R spec ./test/test_server/*.js"
+    "test_server": "mocha ./test/test_server/*.js --reporter progress "
   },
   "dependencies": {
     "express": "~4.7.2",

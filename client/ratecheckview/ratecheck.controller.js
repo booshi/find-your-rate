@@ -6,14 +6,16 @@ define([
     'angular'
 ], function (angular) {
     angular.module('findYourRateApp.ratecheckcontroller', [])
-        .controller('RateCheckCtrl', ['$scope', '$location', 'RateCheckService', 'RetrieveResultsService',
-            function ($scope, $location, RateCheckService, RetrieveResultsService) {
+        .controller('RateCheckCtrl', ['$scope', '$location',  'RetrieveResultsService',
+            function ($scope, $location,  RetrieveResultsService) {
                 $scope.master = {"name": "", "email": "", "amount": "", "creditscore": ""};
 
                 $scope.update = function (isValid) {
                     if (isValid) {
                         $scope.isLoanDenied = false;
-                        RateCheckService.save($scope.user, function (response) {
+                        RetrieveResultsService.setUser($scope.user);
+
+                        RetrieveResultsService.getRates.save($scope.user, function (response) {
                             if (!response.error) {
                                 $scope.isAdded = RetrieveResultsService.updateRateResults(response);
                                 if ($scope.isAdded) {

@@ -12,6 +12,11 @@
                 <label class='field'>Interest Amount: </label>{{rateResults.interestAmount}}
             </p>
             <p>
+                <label class='field'>Credit Score: </label>
+                <input type="number" ng-model="user.creditscore" required id="creditscore" min="300" max="850" name="creditscore"/>
+
+            </p>
+            <p>
                 You can choose the following payment option for the loan
             </p>
             <table>
