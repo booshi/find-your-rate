@@ -12,11 +12,12 @@ define([
             $scope.back = function() {
                 $scope.path = $location.path('/ratecheck');
                 $scope.isSuccessMessageVisible = false;
+                $scope.isLoanDenied = false;
             };
 
             $scope.submitApplication = function(){
                 $scope.isSuccessMessageVisible = true;
-
+                $scope.isLoanDenied = false;
                 RetrieveResultsService.getRates.save($scope.user,function(response){
                     if (!response.error) {
                         $scope.isAdded = RetrieveResultsService.updateRateResults(response);
@@ -24,7 +25,7 @@ define([
                             $scope.rateResults = RetrieveResultsService.retrieveRateResults();
                         }
                     } else {
-                        $location.path('/ratecheck');
+                        //$location.path('/ratecheck');
                         $scope.isLoanDenied = true;
                     }
                 });
