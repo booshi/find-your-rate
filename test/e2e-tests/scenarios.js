@@ -45,6 +45,7 @@ describe('find your rate client', function () {
         var submitLoanApplication = element.all(by.id('submitLoanApplication'));
         var backToForm = element.all(by.id('backToForm'));
         var successMessage = element.all(by.id('successMessage'));
+        var revisedCreditScore = element.all(by.id('revisedCreditScore'));
 
 
         function inputData(userName, userEmail,requestedAmount,userCreditScore) {
@@ -104,20 +105,43 @@ describe('find your rate client', function () {
             expect(element.all(by.css('[ng-view] form div fieldset legend')).first().getText()).
                 toMatch(/Please find your approved loan rate below/);
             submitLoanApplication.click();
-            expect(element(by
-                .css('div.ng-hide')).isPresent()).toBe(false);
+            var successMessageDiv = element.all(by.id('successMessage'));
+            expect(successMessageDiv.count()).toBe(1);
+            expect(successMessageDiv.get(0).getText()).toEqual('Your application is submitted successfully.');
+
         });
 
-        it('should return to find your rate', function() {
-            inputData('testUser', 'testEmail@gmail.com','6500','359');
+        it('should deny loan application after credit score update', function() {
+            inputData('testUser', 'testEmail@gmail.com','20000','800');
             findYourRate.click();
             expect(element(by
                 .css('div.ng-hide')).isPresent()).toBe(true);
             expect(element.all(by.css('[ng-view] form div fieldset legend')).first().getText()).
                 toMatch(/Please find your approved loan rate below/);
-            backToForm.click();
+            creditscore.sendKeys('300');
+            submitLoanApplication.click();
+            var deniedMessageDiv = element.all(by.id('loanDenied'));
+            expect(deniedMessageDiv.count()).toBe(1);
+            expect(deniedMessageDiv.get(0).getText()).toEqual('Your loan application is not approved. Please contact us at 1-800-GET-LOANS for more details.');
+        });
+
+        it('should return updated rate', function() {
+            inputData('testUser', 'testEmail@gmail.com','20000','800');
+            findYourRate.click();
+            expect(element(by
+                .css('div.ng-hide')).isPresent()).toBe(true);
             expect(element.all(by.css('[ng-view] form div fieldset legend')).first().getText()).
-                toMatch(/Please enter your details/);
+                toMatch(/Please find your approved loan rate below/);
+            revisedCreditScore.clear();
+            revisedCreditScore.sendKeys('670');
+            submitLoanApplication.click();
+
+            var successMessageDiv = element.all(by.id('successMessage'));
+            expect(successMessageDiv.count()).toBe(1);
+            expect(successMessageDiv.get(0).getText()).toEqual('Your application is submitted successfully.');
+
+
+
         });
 
     });

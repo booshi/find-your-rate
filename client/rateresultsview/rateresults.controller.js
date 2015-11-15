@@ -26,11 +26,10 @@ define([
                         }
                     } else {
                         //$location.path('/ratecheck');
+                        $scope.isSuccessMessageVisible=false;
                         $scope.isLoanDenied = true;
                     }
                 });
-
             }
-
         }]);
 });
